@@ -3,72 +3,89 @@
 import styled from "styled-components";
 
 const Container = styled.div`
+  --gray-rgb: 0, 0, 0;
+  --gray-alpha-200: rgba(var(--gray-rgb), 0.08);
+  --gray-alpha-100: rgba(var(--gray-rgb), 0.05);
+
+  display: grid;
+  grid-template-rows: 20px 1fr 20px;
+  align-items: center;
+  justify-items: center;
   min-height: 100vh;
-  padding: 2rem;
-  max-width: 1400px;
-  margin: 0 auto;
+  padding: 80px;
+  gap: 64px;
+  font-family: var(--font-geist-sans);
+
+  @media (prefers-color-scheme: dark) {
+    --gray-rgb: 255, 255, 255;
+    --gray-alpha-200: rgba(var(--gray-rgb), 0.145);
+    --gray-alpha-100: rgba(var(--gray-rgb), 0.06);
+  }
+
+  @media (max-width: 600px) {
+    padding: 32px;
+    padding-bottom: 80px;
+  }
 `;
 
-const Header = styled.header`
+const Main = styled.main`
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  grid-row-start: 2;
+  align-items: center;
   text-align: center;
-  margin-bottom: 3rem;
-  padding: 2rem 0;
 `;
 
 const Title = styled.h1`
-  font-size: 3rem;
-  font-weight: 700;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin-bottom: 1rem;
+  font-size: 48px;
+  font-weight: 600;
+  color: var(--foreground);
+  margin: 0;
+  letter-spacing: -0.02em;
 
-  @media (max-width: 768px) {
-    font-size: 2rem;
+  @media (max-width: 600px) {
+    font-size: 32px;
   }
 `;
 
 const Subtitle = styled.p`
-  font-size: 1.25rem;
-  color: #666;
+  font-family: var(--font-geist-mono);
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: -0.01em;
+  color: var(--foreground);
+  opacity: 0.7;
   max-width: 600px;
-  margin: 0 auto;
-
-  @media (prefers-color-scheme: dark) {
-    color: #aaa;
-  }
-
-  @media (max-width: 768px) {
-    font-size: 1rem;
-  }
+  margin: 0;
 `;
 
 const Grid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 2rem;
-  padding: 1rem 0;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+  width: 100%;
+  max-width: 1200px;
 
-  @media (max-width: 768px) {
+  @media (max-width: 600px) {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: 16px;
   }
 `;
 
 export default function CardsPage(): React.ReactElement {
   return (
     <Container>
-      <Header>
+      <Main>
         <Title>Card Gallery</Title>
         <Subtitle>
           Explore our collection of resources and tools
         </Subtitle>
-      </Header>
-      
-      <Grid>
-        {/* Cards will be added here */}
-      </Grid>
+        
+        <Grid>
+          {/* Cards will be added here */}
+        </Grid>
+      </Main>
     </Container>
   );
 }

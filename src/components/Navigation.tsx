@@ -4,59 +4,69 @@ import Link from "next/link";
 import styled from "styled-components";
 
 const Nav = styled.nav`
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  --gray-rgb: 0, 0, 0;
+  --gray-alpha-200: rgba(var(--gray-rgb), 0.08);
+  
+  border-bottom: 1px solid var(--gray-alpha-200);
   position: sticky;
   top: 0;
   z-index: 100;
+  background: var(--background);
+  font-family: var(--font-geist-sans);
 
   @media (prefers-color-scheme: dark) {
-    background: rgba(0, 0, 0, 0.3);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    --gray-rgb: 255, 255, 255;
+    --gray-alpha-200: rgba(var(--gray-rgb), 0.145);
   }
 `;
 
 const Container = styled.div`
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 1rem 2rem;
+  padding: 20px 80px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media (max-width: 600px) {
+    padding: 16px 32px;
+  }
 `;
 
 const Logo = styled(Link)`
-  font-size: 1.5rem;
-  font-weight: bold;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  transition: opacity 0.3s ease;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--foreground);
+  transition: opacity 0.2s;
 
   &:hover {
-    opacity: 0.8;
+    opacity: 0.7;
   }
 `;
 
 const NavList = styled.ul`
   display: flex;
-  gap: 2rem;
+  gap: 24px;
   list-style: none;
 `;
 
 const NavLink = styled(Link)`
-  font-size: 1rem;
+  font-size: 14px;
   font-weight: 500;
   color: var(--foreground);
-  transition: all 0.3s ease;
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
+  transition: opacity 0.2s;
+  padding: 8px 16px;
+  border-radius: 128px;
+  border: 1px solid transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
 
-  &:hover {
-    background: rgba(102, 126, 234, 0.1);
-    color: #667eea;
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      opacity: 0.7;
+    }
   }
 `;
 
