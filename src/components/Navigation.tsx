@@ -82,6 +82,9 @@ export default function Navigation(): React.ReactElement {
           <li>
             <NavLink href="/cards">Cards</NavLink>
           </li>
+          <li>
+            <NavLink href="/topics">Topics</NavLink>
+          </li>
         </NavList>
       </Container>
     </Nav>
