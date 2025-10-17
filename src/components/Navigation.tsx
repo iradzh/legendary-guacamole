@@ -74,7 +74,7 @@ export default function Navigation(): React.ReactElement {
   return (
     <Nav>
       <Container>
-        <Logo href="/">MyApp</Logo>
+        <Logo href="/">900</Logo>
         <NavList>
           <li>
             <NavLink href="/">Home</NavLink>
